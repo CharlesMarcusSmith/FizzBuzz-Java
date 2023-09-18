@@ -7,27 +7,27 @@ public class App {
     public static void fizzbuzz() {
         // Your code goes here!
 
-                StringBuilder solution = new StringBuilder();
+        StringBuilder solution = new StringBuilder();
 
-        for(int i=0; i<=100; i++){
-            if(isDiv(i, 3)==false && isDiv(i, 5)==false){
-                solution.append(String.format(i+"%n"));
+        for(int i=1; i<=100; i++){
+            if(isDiv(i, 3)==false && isDiv(i, 5)==false && isDiv(i,7)==false){
+                solution.append(String.format(i+"\n"));
+                continue;
             }
             else{
-                if(isDiv(i, 3)==true || isDiv(i, 5)==true){
-                    solution.append(String.format("Fizz%n"));
-                    continue;
+                if(isDiv(i, 3)==true){
+                    solution.append("Fizz");
+                    
                 }
-                if(isDiv(i, 3)==true || isDiv(i, 5)==true){
-                    solution.append(String.format("Buzz%n"));
-                    continue;
+                if(isDiv(i, 5)==true){
+                    solution.append("Buzz");
+                    
                 }
-                if(isDiv(i, 3)==true || isDiv(i, 5)==true){
-                    solution.append(String.format("FizzBuzz"));
-                    continue;
+                if(isDiv(i, 7)==true){
+                    solution.append("Bang");
                 }
             }
-
+            solution.append("\n");
         }
         System.out.println(solution);
     }

@@ -8,32 +8,41 @@ public class App {
         //String for holding the entire solution:
         StringBuilder solution = new StringBuilder();
         
-        for(int i=1; i<=100; i++){  //i is inNumA.
+        for(int i=140; i<=150; i++){  //i is inNumA.
             //Boolean for checking if bong has been detected:
             boolean bong = false;
-
+            System.out.println(solution);
+            
+            //NO MATCHES
             if(isDiv(i, 3)==false && isDiv(i, 5)==false && isDiv(i,7)==false && isDiv(i,11)==false && isDiv(i,13)==false){
                 solution.append(String.format(i+"\n"));
                 continue;
             }
             else{
+
                 //If a number is a multiple of 11, print “Bong” instead of the number. 
                 //Do not print anything else in these cases. (e.g. 3 * 11 = 33: “Bong”)
+                //BONG 11
                 if(isDiv(i, 11)==true){
                     solution.append("Bong");
                     bong = true;
                 }
 
                 //If a number is a multiple of three, print “Fizz” instead of the number.
+                //FIZZ 3
                 if(isDiv(i, 3)==true && bong==false){
                     solution.append("Fizz");
                 }
+
                 //If a number is a multiple of 13, print “Fezz” instead of the number. 
                 //If the number is both a multiple of 13 and another number, the “Fezz” goes immediately in front of the first word beginning with B (if there is one), or at the end if there are none. (e.g. 5 * 13 = 65: “FezzBuzz”, 3 * 5 * 13 = 195: “FizzFezzBuzz”). 
                 //Note that Fezz should be printed even if Bong is also present (e.g. 11 * 13 = 143: “FezzBong”).
+                //FEZZ NO BONG 13
                 if(isDiv(i, 13)==true && bong == false){    //bong false
                     solution.append("Fezz");
                 }
+
+                //FEZZBONG 13
                 if(isDiv(i, 13)==true && bong == true){ //bong true
                     //'Removing Bong', and adding 'FezzBong':
                     solution.delete(solution.length()-5, solution.length()-1);
@@ -42,11 +51,13 @@ public class App {
                     solution.append("\n");
                     continue;
                 }
+
                 //If the number is a multiple of five print “Buzz” instead of the number. 
                 //For numbers which are multiples of both three and five print “FizzBuzz” instead of the number.
                 if(isDiv(i, 5)==true && bong==false){
                     solution.append("Buzz");
                 }
+
                 //If a number is a multiple of 7, print “Bang” instead of the number. 
                 //For any number which is both a multiple of 7 and a multiple of 3 or 5, append Bang to what you’d have printed anyway. (e.g. 3 * 7 = 21: “FizzBang”).
                 if(isDiv(i, 7)==true && bong==false){
